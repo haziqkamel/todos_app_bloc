@@ -1,9 +1,8 @@
+import 'package:todos_api/todos_api.dart';
+
 /// {@template todos_repository}
 // A repository that handles `todo` related requests.
 /// {@endtemplate}
-library;
-
-import 'package:todos_api/todos_api.dart';
 class TodosRepository {
   /// {@macro todos_repository}
   TodosRepository({
