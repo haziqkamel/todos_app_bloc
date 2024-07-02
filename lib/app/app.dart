@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todos_app/home/view/home_page.dart';
+import 'package:todos_app/home/view/view.dart';
 import 'package:todos_app/l10n/l10n.dart';
 import 'package:todos_app/theme/theme.dart';
 import 'package:todos_repository/todos_repository.dart';
