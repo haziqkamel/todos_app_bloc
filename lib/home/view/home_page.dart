@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todos_app/home/cubit/home_cubit.dart';
+import 'package:todos_app/stats/view/view.dart';
 import 'package:todos_app/todos_overview/view/view.dart';
 
 class HomePage extends StatelessWidget {
@@ -25,8 +26,8 @@ class HomeView extends StatelessWidget {
     return Scaffold(
       body: IndexedStack(
         index: selectedTab.index,
-        children: [
-          const TodosOverviewPage(),
+        children: const [
+          TodosOverviewPage(),
           StatsPage(),
         ],
       ),
