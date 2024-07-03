@@ -44,14 +44,10 @@ Future<void> bootstrap({required LocalStorageTodosApi todosApi}) async {
   final authenticationRepository = AuthenticationRepository();
   final todosRepository = TodosRepository(todosApi: todosApi);
 
-  runZonedGuarded(
-    () => runApp(App(
+  runApp(
+    App(
       todosRepository: todosRepository,
       authenticationRepository: authenticationRepository,
-    )),
-    (error, stacktrace) => log(
-      error.toString(),
-      stackTrace: stacktrace,
     ),
   );
 }
