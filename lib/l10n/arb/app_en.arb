@@ -108,5 +108,18 @@
   "statsActiveTodoCountLabel": "Active todos",
   "@statsActiveTodoCountLabel": {
     "description": "Label text shown in the active todos count section of the Stats Page"
-  }
+  },
+
+
+  "loginAppBarTitle": "Login",
+
+  "snackBarAuthenticationFailed": "Authentication failed",
+
+  "email": "Email",
+  "invalid_email": "Invalid email",
+  "password": "Password",
+  "invalid_password": "Invalid password",
+  "login": "Login",
+  "sign_in_with_google": "SIGN IN WITH GOOGLE",
+  "create_account": "CREATE ACCOUNT"
 }

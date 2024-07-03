@@ -1,5 +1,6 @@
 import 'package:formz/formz.dart';
 
+/// Validation errors for the [Password] [FormzInput].
 enum PasswordValidationError {
   /// Generic invalid error.
   invalid
