@@ -73,6 +73,10 @@ class SignInWithEmailAndPasswordFailure implements Exception {
         return const SignInWithEmailAndPasswordFailure(
           'The password is invalid for the given email',
         );
+      case 'invalid-credential':
+        return const SignInWithEmailAndPasswordFailure(
+          'The email address/password is not valid',
+        );
       case 'invalid-email':
         return const SignInWithEmailAndPasswordFailure(
           'The email address is not valid',
