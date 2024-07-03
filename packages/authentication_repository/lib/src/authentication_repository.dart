@@ -1,8 +1,8 @@
 import 'package:authentication_repository/authentication_repository.dart';
 import 'package:cache/cache.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter/foundation.dart' show kIsWeb, visibleForTesting;
+import 'package:google_sign_in/google_sign_in.dart';
 
 /// {@template sign_in_with_email_and_password_failure}
 /// Exception thrown when an exception occurs during the sign in with email
@@ -170,6 +170,7 @@ class AuthenticationRepository {
   @visibleForTesting
   bool isWeb = kIsWeb;
 
+  /// Key used to cache the current user.
   @visibleForTesting
   static const userCacheKey = '__user_cache_key__';
 

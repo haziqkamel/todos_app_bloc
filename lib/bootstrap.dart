@@ -1,10 +1,13 @@
 import 'dart:async';
 import 'dart:developer';
 
+import 'package:authentication_repository/authentication_repository.dart';
 import 'package:bloc/bloc.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/widgets.dart';
 import 'package:local_storage_todos_api/local_storage_todos_api.dart';
 import 'package:todos_app/app/app.dart';
+import 'package:todos_app/firebase_options.dart';
 import 'package:todos_repository/todos_repository.dart';
 
 class AppBlocObserver extends BlocObserver {
@@ -22,7 +25,7 @@ class AppBlocObserver extends BlocObserver {
   }
 }
 
-void bootstrap({required LocalStorageTodosApi todosApi}) {
+Future<void> bootstrap({required LocalStorageTodosApi todosApi}) async {
   FlutterError.onError = (details) => log(
         details.exceptionAsString(),
         stackTrace: details.stack,
@@ -30,10 +33,22 @@ void bootstrap({required LocalStorageTodosApi todosApi}) {
 
   Bloc.observer = const AppBlocObserver();
 
+  try {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+  } catch (error) {
+    log('Firebase.initializeApp() failed', error: error);
+  }
+
+  final authenticationRepository = AuthenticationRepository();
   final todosRepository = TodosRepository(todosApi: todosApi);
 
   runZonedGuarded(
-    () => runApp(App(todosRepository: todosRepository)),
+    () => runApp(App(
+      todosRepository: todosRepository,
+      authenticationRepository: authenticationRepository,
+    )),
     (error, stacktrace) => log(
       error.toString(),
       stackTrace: stacktrace,

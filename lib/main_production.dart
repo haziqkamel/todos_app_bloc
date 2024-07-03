@@ -9,5 +9,5 @@ Future<void> main() async {
     plugin: await SharedPreferences.getInstance(),
   );
 
-  bootstrap(todosApi: todosApi);
+  await bootstrap(todosApi: todosApi);
 }

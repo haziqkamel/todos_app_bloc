@@ -1,3 +1,4 @@
+import 'package:authentication_repository/authentication_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todos_app/home/view/view.dart';
@@ -6,14 +7,22 @@ import 'package:todos_app/theme/theme.dart';
 import 'package:todos_repository/todos_repository.dart';
 
 class App extends StatelessWidget {
-  const App({required this.todosRepository, super.key});
+  const App({
+    required this.todosRepository,
+    required this.authenticationRepository,
+    super.key,
+  });
 
   final TodosRepository todosRepository;
+  final AuthenticationRepository authenticationRepository;
 
   @override
   Widget build(BuildContext context) {
-    return RepositoryProvider.value(
-      value: todosRepository,
+    return MultiRepositoryProvider(
+      providers: [
+        RepositoryProvider(create: (context) => todosRepository),
+        RepositoryProvider(create: (context) => authenticationRepository),
+      ],
       child: const AppView(),
     );
   }
