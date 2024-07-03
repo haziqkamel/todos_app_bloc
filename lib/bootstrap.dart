@@ -44,6 +44,9 @@ Future<void> bootstrap({required LocalStorageTodosApi todosApi}) async {
   final authenticationRepository = AuthenticationRepository();
   final todosRepository = TodosRepository(todosApi: todosApi);
 
+  // Initiate the User object
+  await authenticationRepository.user.first;
+
   runApp(
     App(
       todosRepository: todosRepository,

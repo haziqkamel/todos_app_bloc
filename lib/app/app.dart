@@ -1,7 +1,9 @@
 import 'package:authentication_repository/authentication_repository.dart';
+import 'package:flow_builder/flow_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todos_app/home/view/view.dart';
+import 'package:todos_app/app/bloc/app_bloc.dart';
+import 'package:todos_app/app/routes/routes.dart';
 import 'package:todos_app/l10n/l10n.dart';
 import 'package:todos_app/theme/theme.dart';
 import 'package:todos_repository/todos_repository.dart';
@@ -38,7 +40,10 @@ class AppView extends StatelessWidget {
       darkTheme: TodosAppTheme.dark,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      home: const HomePage(),
+      home: FlowBuilder<AppStatus>(
+        state: context.select((AppBloc bloc) => bloc.state.status),
+        onGeneratePages: onGenerateAppViewPages,
+      ),
     );
   }
 }
