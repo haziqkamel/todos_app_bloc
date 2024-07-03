@@ -25,7 +25,12 @@ class App extends StatelessWidget {
         RepositoryProvider(create: (context) => todosRepository),
         RepositoryProvider(create: (context) => authenticationRepository),
       ],
-      child: const AppView(),
+      child: BlocProvider(
+        create: (_) => AppBloc(
+          authenticationRepository: authenticationRepository,
+        ),
+        child: const AppView(),
+      ),
     );
   }
 }
@@ -38,6 +43,7 @@ class AppView extends StatelessWidget {
     return MaterialApp(
       theme: TodosAppTheme.light,
       darkTheme: TodosAppTheme.dark,
+      themeMode: context.select((AppBloc bloc) => bloc.state.themeMode),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       home: FlowBuilder<AppStatus>(

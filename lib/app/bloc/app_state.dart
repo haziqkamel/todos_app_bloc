@@ -9,6 +9,7 @@ final class AppState extends Equatable {
   const AppState._({
     required this.status,
     this.user = User.empty,
+    this.themeMode = ThemeMode.system,
   });
 
   const AppState.authenticated(User user)
@@ -18,7 +19,20 @@ final class AppState extends Equatable {
 
   final AppStatus status;
   final User user;
+  final ThemeMode themeMode;
+
+  AppState copyWith({
+    AppStatus? status,
+    User? user,
+    ThemeMode? themeMode,
+  }) {
+    return AppState._(
+      status: status ?? this.status,
+      user: user ?? this.user,
+      themeMode: themeMode ?? this.themeMode,
+    );
+  }
 
   @override
-  List<Object> get props => [status, user];
+  List<Object> get props => [status, user, themeMode];
 }

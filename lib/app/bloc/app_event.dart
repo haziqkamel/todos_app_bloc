@@ -13,3 +13,9 @@ final class _AppUserChanged extends AppEvent {
 
   final User user;
 }
+
+final class AppThemeChanged extends AppEvent {
+  const AppThemeChanged(this.themeMode);
+
+  final ThemeMode themeMode;
+}
