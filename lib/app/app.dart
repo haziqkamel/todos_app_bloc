@@ -5,8 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:github_search_repository/github_search_repository.dart';
 import 'package:todos_app/app/bloc/app_bloc.dart';
 import 'package:todos_app/app/routes/routes.dart';
+import 'package:todos_app/core/theme/theme.dart';
 import 'package:todos_app/l10n/l10n.dart';
-import 'package:todos_app/theme/theme.dart';
 import 'package:todos_repository/todos_repository.dart';
 
 class App extends StatelessWidget {
