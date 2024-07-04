@@ -50,12 +50,14 @@ class HomeView extends StatelessWidget {
           SearchPage(),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        shape: const CircleBorder(),
-        key: const Key('homeView_addTodo_floatingActionButton'),
-        onPressed: () => Navigator.of(context).push(EditTodoPage.route()),
-        child: const Icon(Icons.add),
-      ),
+      floatingActionButton: selectedTab.name == 'todos'
+          ? FloatingActionButton(
+              shape: const CircleBorder(),
+              key: const Key('homeView_addTodo_floatingActionButton'),
+              onPressed: () => Navigator.of(context).push(EditTodoPage.route()),
+              child: const Icon(Icons.add),
+            )
+          : null,
       bottomNavigationBar: BottomAppBar(
         shape: const CircularNotchedRectangle(),
         child: Row(
