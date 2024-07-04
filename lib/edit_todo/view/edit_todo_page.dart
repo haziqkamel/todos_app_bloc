@@ -44,35 +44,39 @@ class EditTodoView extends StatelessWidget {
     final isNewTodo =
         context.select((EditTodoBloc bloc) => bloc.state.isNewTodo);
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          isNewTodo
-              ? l10n.editTodoAddAppBarTitle
-              : l10n.editTodoEditAppBarTitle,
+    return PopScope(
+      onPopInvoked: (_) => FocusManager.instance.primaryFocus?.unfocus(),
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            isNewTodo
+                ? l10n.editTodoAddAppBarTitle
+                : l10n.editTodoEditAppBarTitle,
+          ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        tooltip: l10n.editTodoSaveButtonTooltip,
-        shape: const ContinuousRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(32)),
+        floatingActionButton: FloatingActionButton(
+          tooltip: l10n.editTodoSaveButtonTooltip,
+          shape: const ContinuousRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(32)),
+          ),
+          onPressed: status.isLoadingOrSuccess
+              ? null
+              : () =>
+                  context.read<EditTodoBloc>().add(const EditTodoSubmitted()),
+          child: status.isLoadingOrSuccess
+              ? const CupertinoActivityIndicator()
+              : const Icon(Icons.check_rounded),
         ),
-        onPressed: status.isLoadingOrSuccess
-            ? null
-            : () => context.read<EditTodoBloc>().add(const EditTodoSubmitted()),
-        child: status.isLoadingOrSuccess
-            ? const CupertinoActivityIndicator()
-            : const Icon(Icons.check_rounded),
-      ),
-      body: const CupertinoScrollbar(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.all(16),
-            child: Column(
-              children: [
-                _TitleField(),
-                _DescriptionField(),
-              ],
+        body: const CupertinoScrollbar(
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.all(16),
+              child: Column(
+                children: [
+                  _TitleField(),
+                  _DescriptionField(),
+                ],
+              ),
             ),
           ),
         ),

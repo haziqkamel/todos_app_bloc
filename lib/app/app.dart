@@ -44,15 +44,18 @@ class AppView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: TodosAppTheme.light,
-      darkTheme: TodosAppTheme.dark,
-      themeMode: context.select((AppBloc bloc) => bloc.state.themeMode),
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: AppLocalizations.supportedLocales,
-      home: FlowBuilder<AppStatus>(
-        state: context.select((AppBloc bloc) => bloc.state.status),
-        onGeneratePages: onGenerateAppViewPages,
+    return GestureDetector(
+      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+      child: MaterialApp(
+        theme: TodosAppTheme.light,
+        darkTheme: TodosAppTheme.dark,
+        themeMode: context.select((AppBloc bloc) => bloc.state.themeMode),
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+        home: FlowBuilder<AppStatus>(
+          state: context.select((AppBloc bloc) => bloc.state.status),
+          onGeneratePages: onGenerateAppViewPages,
+        ),
       ),
     );
   }
