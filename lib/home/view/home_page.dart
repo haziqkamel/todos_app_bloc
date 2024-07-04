@@ -1,3 +1,4 @@
+import 'package:authentication_repository/authentication_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todos_app/edit_todo/view/view.dart';
@@ -13,7 +14,9 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => HomeCubit(),
+      create: (context) => HomeCubit(
+        context.read<AuthenticationRepository>(),
+      ),
       child: const HomeView(),
     );
   }
@@ -54,6 +57,11 @@ class HomeView extends StatelessWidget {
               groupValue: selectedTab,
               value: HomeTab.stats,
               icon: const Icon(Icons.show_chart_rounded),
+            ),
+            _HomeTabButton(
+              groupValue: selectedTab,
+              value: HomeTab.logout,
+              icon: const Icon(Icons.logout_rounded),
             ),
           ],
         ),

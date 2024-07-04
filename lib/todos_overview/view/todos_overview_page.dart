@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:todos_app/app/bloc/app_bloc.dart';
 import 'package:todos_app/edit_todo/view/view.dart';
 import 'package:todos_app/l10n/l10n.dart';
 import 'package:todos_app/todos_overview/bloc/todos_overview_bloc.dart';
@@ -27,10 +28,14 @@ class TodosOverviewView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
+    final user = context.select((AppBloc bloc) => bloc.state.user);
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(l10n.todosOverviewAppBarTitle),
+        title: Text(
+          '${l10n.todosOverviewAppBarTitle}- ${user.email?.split('@').first}',
+          style: const TextStyle(fontSize: 18),
+        ),
         actions: const [
           TodosOverviewFilterButton(),
           TodosOverviewOptionsButton(),
