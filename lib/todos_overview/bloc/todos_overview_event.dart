@@ -42,7 +42,7 @@ final class TodosOverviewUndoDeletionRequested extends TodosOverviewEvent {
   const TodosOverviewUndoDeletionRequested();
 }
 
-// This takes a [TodosViewFilter] as an argument and changes the view by 
+// This takes a [TodosViewFilter] as an argument and changes the view by
 // applying a filter.
 class TodosOverviewFilterChanged extends TodosOverviewEvent {
   const TodosOverviewFilterChanged(this.filter);

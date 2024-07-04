@@ -17,9 +17,8 @@ class EmailInput extends StatelessWidget {
           decoration: InputDecoration(
             labelText: l10n.email,
             helperText: '',
-            errorText: state.email.displayError != null
-                ? l10n.invalid_email
-                : null,
+            errorText:
+                state.email.displayError != null ? l10n.invalid_email : null,
           ),
         );
       },

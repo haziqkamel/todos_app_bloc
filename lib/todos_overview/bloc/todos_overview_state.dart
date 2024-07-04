@@ -2,9 +2,9 @@ part of 'todos_overview_bloc.dart';
 
 enum TodosOverviewStatus { initial, loading, success, failure }
 
-/// [TodosOverviewState] will keep track of a list of [todos], 
+/// [TodosOverviewState] will keep track of a list of [todos],
 /// the active [filter],
-/// the [lastDeletedTodo], 
+/// the [lastDeletedTodo],
 /// and the [status].
 final class TodosOverviewState extends Equatable {
   const TodosOverviewState({

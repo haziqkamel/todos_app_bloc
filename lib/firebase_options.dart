@@ -53,7 +53,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '719213427078',
     projectId: 'blocxfirebase',
     storageBucket: 'blocxfirebase.appspot.com',
-    iosClientId: '719213427078-1ps6bngrmqlhfglvieve1vl45uhe0cgn.apps.googleusercontent.com',
+    iosClientId:
+        '719213427078-1ps6bngrmqlhfglvieve1vl45uhe0cgn.apps.googleusercontent.com',
     iosBundleId: 'com.example.verygoodcore.todos-app',
   );
 }
