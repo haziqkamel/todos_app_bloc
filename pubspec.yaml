@@ -22,15 +22,19 @@ dependencies:
   form_inputs:
     path: packages/form_inputs
   formz: ^0.7.0
+  github_search_repository:
+    path: packages/github_search_repository
   google_fonts: ^6.2.1
   intl: ^0.19.0
   local_storage_todos_api:
     path: packages/local_storage_todos_api
   meta: ^1.12.0
+  stream_transform: ^2.1.0
   todos_api:
     path: packages/todos_api
   todos_repository:
     path: packages/todos_repository
+  url_launcher: ^6.3.0
 
 dev_dependencies:
   bloc_test: ^9.1.6

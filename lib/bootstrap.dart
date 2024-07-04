@@ -5,6 +5,7 @@ import 'package:authentication_repository/authentication_repository.dart';
 import 'package:bloc/bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/widgets.dart';
+import 'package:github_search_repository/github_search_repository.dart';
 import 'package:local_storage_todos_api/local_storage_todos_api.dart';
 import 'package:todos_app/app/app.dart';
 import 'package:todos_app/firebase_options.dart';
@@ -43,6 +44,7 @@ Future<void> bootstrap({required LocalStorageTodosApi todosApi}) async {
 
   final authenticationRepository = AuthenticationRepository();
   final todosRepository = TodosRepository(todosApi: todosApi);
+  final githubSearchRepository = GithubSearchRepository();
 
   // Initiate the User object
   await authenticationRepository.user.first;
@@ -51,6 +53,7 @@ Future<void> bootstrap({required LocalStorageTodosApi todosApi}) async {
     App(
       todosRepository: todosRepository,
       authenticationRepository: authenticationRepository,
+      githubSearchRepository: githubSearchRepository,
     ),
   );
 }

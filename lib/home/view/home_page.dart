@@ -1,7 +1,10 @@
 import 'package:authentication_repository/authentication_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:github_search_repository/github_search_repository.dart';
 import 'package:todos_app/edit_todo/view/view.dart';
+import 'package:todos_app/github_search/bloc/github_search_bloc.dart';
+import 'package:todos_app/github_search/view/view.dart';
 import 'package:todos_app/home/cubit/home_cubit.dart';
 import 'package:todos_app/stats/view/view.dart';
 import 'package:todos_app/todos_overview/view/view.dart';
@@ -13,10 +16,19 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => HomeCubit(
-        context.read<AuthenticationRepository>(),
-      ),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => HomeCubit(
+            context.read<AuthenticationRepository>(),
+          ),
+        ),
+        BlocProvider(
+          create: (_) => GithubSearchBloc(
+            githubSearchRepository: context.read<GithubSearchRepository>(),
+          ),
+        ),
+      ],
       child: const HomeView(),
     );
   }
@@ -35,6 +47,7 @@ class HomeView extends StatelessWidget {
         children: const [
           TodosOverviewPage(),
           StatsPage(),
+          SearchPage(),
         ],
       ),
       floatingActionButton: FloatingActionButton(
@@ -57,6 +70,11 @@ class HomeView extends StatelessWidget {
               groupValue: selectedTab,
               value: HomeTab.stats,
               icon: const Icon(Icons.show_chart_rounded),
+            ),
+            _HomeTabButton(
+              groupValue: selectedTab,
+              value: HomeTab.search,
+              icon: const Icon(Icons.search_rounded),
             ),
             _HomeTabButton(
               groupValue: selectedTab,

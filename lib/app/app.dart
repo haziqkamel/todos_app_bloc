@@ -2,6 +2,7 @@ import 'package:authentication_repository/authentication_repository.dart';
 import 'package:flow_builder/flow_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:github_search_repository/github_search_repository.dart';
 import 'package:todos_app/app/bloc/app_bloc.dart';
 import 'package:todos_app/app/routes/routes.dart';
 import 'package:todos_app/l10n/l10n.dart';
@@ -12,11 +13,13 @@ class App extends StatelessWidget {
   const App({
     required this.todosRepository,
     required this.authenticationRepository,
+    required this.githubSearchRepository,
     super.key,
   });
 
   final TodosRepository todosRepository;
   final AuthenticationRepository authenticationRepository;
+  final GithubSearchRepository githubSearchRepository;
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +27,7 @@ class App extends StatelessWidget {
       providers: [
         RepositoryProvider(create: (context) => todosRepository),
         RepositoryProvider(create: (context) => authenticationRepository),
+        RepositoryProvider(create: (context) => githubSearchRepository),
       ],
       child: BlocProvider(
         create: (_) => AppBloc(
