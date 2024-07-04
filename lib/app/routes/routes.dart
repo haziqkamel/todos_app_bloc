@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:todos_app/app/bloc/app_bloc.dart';
-import 'package:todos_app/home/view/view.dart';
-import 'package:todos_app/login/view/view.dart';
+import 'package:todos_app/features/home/view/view.dart';
+import 'package:todos_app/features/login/view/view.dart';
 
 List<Page<dynamic>> onGenerateAppViewPages(
   AppStatus state,
