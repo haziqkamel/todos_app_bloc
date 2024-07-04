@@ -112,14 +112,19 @@
 
 
   "loginAppBarTitle": "Login",
+  "signupAppBarTitle": "Sign Up",
 
   "snackBarAuthenticationFailed": "Authentication failed",
+  "snackBarSignupFailured": "Signup failed",
 
   "email": "Email",
   "invalid_email": "Invalid email",
   "password": "Password",
   "invalid_password": "Invalid password",
+  "confirm_password": "Confirm Password",
+  "password_not_match": "Password not match",
   "login": "Login",
   "sign_in_with_google": "SIGN IN WITH GOOGLE",
-  "create_account": "CREATE ACCOUNT"
+  "create_account": "CREATE ACCOUNT",
+  "sign_up_button": "SIGN UP"
 }
