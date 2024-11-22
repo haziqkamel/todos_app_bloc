@@ -38,7 +38,7 @@ dependencies:
 
 dev_dependencies:
   bloc_test: ^9.1.6
-  firebase_auth_mocks: ^0.14.0
+  firebase_auth_mocks: ^0.14.1
   flutter_test:
     sdk: flutter
   mockingjay: ^0.5.0
